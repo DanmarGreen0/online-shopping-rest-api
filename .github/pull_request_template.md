@@ -1,16 +1,15 @@
 ## Risk and Impact Analysis
-This section MUST be completed to categorize risk of this change to downstream consumers
+Users need a way of securing their accounts from other users. Without a security functionality, different users may potentially steal other user accounts or information. Therefore, security is a vital feature of any computer application, especially web applications that store important or confidential data. Also, know would ever want to use an application that exposes their information to the entire world.
 
 ## Overview
-What's Changed
-Select all applicable (at least one):
+I have implemented a security feature that allows users to log in to their accounts. I have also implemented web service endpoint security that enforces user access. However, once a user logs into their account using a web browser, they can't log out of their account unless they end the browser session. In a use case where multiple users interact with a single device to sign in to their accounts, this security flaw would leave any user at risk of another user using their account. 
 
-## Monthly Patch (updating based on new base images developed by the hardening team, or external entity)
-## Bug fix (non-breaking change which fixes an issue)
 ## New feature/API (non-breaking change which adds functionality)
-## API change (API that changes compatibility)
-## Breaking change (fix or feature that would cause existing functionality to not work as expected)
-## Documentation change
+- security
+  - user login their account
+  - admin user can view all user accounts and their information
+  - basic user can only view their account information
+
 ## Configuration change
 ## Other, explain here:
 Features
