@@ -31,7 +31,6 @@ public class UserController {
     }
 
     @GetMapping(path="/user")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public @ResponseBody Object getUser(String name){
 
        Optional user = this.userService.getUser(name);
