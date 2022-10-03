@@ -1,4 +1,4 @@
-package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module;
+package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity;
 
 import javax.persistence.*;
 

@@ -1,7 +1,7 @@
 package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.security;
 
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.AuthGroup;
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.User;
+import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity.AuthGroup;
+import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity.User;
 import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.repository.AuthGroupRepository;
 import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

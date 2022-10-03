@@ -26,13 +26,6 @@ public class ApplicationSecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    // @Bean
-    // public GrantedAuthoritiesMapper authoritiesMapper(){
-    //     SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
-    //     authorityMapper.setConvertToUpperCase(true);
-    //     //authorityMapper.setDefaultAuthority("USER");
-    //     return authorityMapper;
-    // }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{

@@ -1,6 +1,6 @@
 package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.repository;
 
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.AuthGroup;
+import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity.AuthGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

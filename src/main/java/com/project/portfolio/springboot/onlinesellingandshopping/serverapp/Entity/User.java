@@ -1,4 +1,4 @@
-package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module;
+package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity;
 
 
 
@@ -23,7 +23,7 @@ public class User {
     @Column(name="Address", nullable = false)
     private String address;
     @Column(name="Date_Of_Birth", nullable = false)
-    private Date dateOfBirth;
+    private String dateOfBirth;
     @Column(name="Email", nullable = false)
     private String email;
     @Column(name="Phone_No", nullable = false)
@@ -81,11 +81,11 @@ public class User {
         this.address = address;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

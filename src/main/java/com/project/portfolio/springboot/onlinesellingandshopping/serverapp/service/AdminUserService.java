@@ -1,16 +1,16 @@
 package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.service;
 
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.User;
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.dto.UserDto;
+import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity.User;
 
 import java.util.List;
 import java.util.Optional;
 
 
-public interface UserService {
+public interface AdminUserService {
 
+    Optional<User> addUser(UserDto userDto);
+    Optional<User> editUser(UserDto userDto, String id);
     Optional<User> getUser(String name);
     List<User> getUsers();
     Iterable<User> getUserByYear();

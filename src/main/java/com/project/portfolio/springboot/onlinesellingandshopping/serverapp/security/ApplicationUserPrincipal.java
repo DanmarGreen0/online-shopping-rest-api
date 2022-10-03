@@ -1,6 +1,6 @@
 package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.security;
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.AuthGroup;
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.User;
+import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity.AuthGroup;
+import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.Entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

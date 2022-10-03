@@ -10,11 +10,12 @@ import java.time.ZonedDateTime;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(value = {DuplicateUsernameException.class})
-    public ResponseEntity<?> handleControllerRequestException(DuplicateUsernameException ex){
+
+    @ExceptionHandler(value = {InvalidRegistrationFieldException.class})
+    public ResponseEntity<?> handleControllerRequestException(InvalidRegistrationFieldException ex){
 
         HttpStatus conflict = HttpStatus.CONFLICT;
-        ErrorDetails errorDetails = new ErrorDetails(ex.getMessage(), ex,
+        ErrorDetails errorDetails = new ErrorDetails(ex.getMessage(),
                                             conflict, ZonedDateTime.now(ZoneId.of("Z")));
 
         return new ResponseEntity<>(errorDetails, conflict);

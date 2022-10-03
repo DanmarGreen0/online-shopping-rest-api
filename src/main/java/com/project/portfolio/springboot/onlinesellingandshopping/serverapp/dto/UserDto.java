@@ -1,5 +1,7 @@
 package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.dto;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,7 @@ public class UserDto {
     private String lastName;
     private String password;
     private String address;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String email;
     private String phoneNo;
     private String createdAt;
@@ -68,11 +70,11 @@ public class UserDto {
         this.address = address;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

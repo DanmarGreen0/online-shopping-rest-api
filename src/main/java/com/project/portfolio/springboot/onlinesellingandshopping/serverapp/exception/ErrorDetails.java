@@ -7,13 +7,11 @@ import java.time.ZonedDateTime;
 
 public class ErrorDetails {
     private final String message;
-    private final Throwable throwable;
     private final HttpStatus httpStatus;
     private final ZonedDateTime zonedDateTime;
 
-    public ErrorDetails(String message, Throwable throwable, HttpStatus httpStatus, ZonedDateTime zonedDateTime) {
+    public ErrorDetails(String message, HttpStatus httpStatus, ZonedDateTime zonedDateTime) {
         this.message = message;
-        this.throwable = throwable;
         this.httpStatus = httpStatus;
         this.zonedDateTime = zonedDateTime;
     }
@@ -22,9 +20,6 @@ public class ErrorDetails {
         return message;
     }
 
-    public Throwable getThrowable() {
-        return throwable;
-    }
 
     public HttpStatus getHttpStatus() {
         return httpStatus;
