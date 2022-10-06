@@ -1,4 +1,4 @@
-package com.project.portfolio.springboot.onlinesellingandshopping;
+package com.online_shopping_rest_api;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,11 +1,12 @@
-package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module;
-
-
+package com.online_shopping_rest_api.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,15 +24,24 @@ public class User {
     @Column(name="Address", nullable = false)
     private String address;
     @Column(name="Date_Of_Birth", nullable = false)
-    private Date dateOfBirth;
+    private String dateOfBirth;
     @Column(name="Email", nullable = false)
     private String email;
     @Column(name="Phone_No", nullable = false)
     private String phoneNo;
     @Column(name="Created_At", nullable = false)
-    private String createdAt;
+    private Date createdAt;
     @Column(name="Modified_At", nullable = false)
-    private String modifiedAt;
+    private Date modifiedAt;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Has_Roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+
+    Set<Role> roles = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -81,11 +91,11 @@ public class User {
         this.address = address;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -105,19 +115,27 @@ public class User {
         this.phoneNo = phoneNo;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getModifiedAt() {
+    public Date getModifiedAt() {
         return modifiedAt;
     }
 
-    public void setModifiedAt(String modifiedAt) {
+    public void setModifiedAt(Date modifiedAt) {
         this.modifiedAt = modifiedAt;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

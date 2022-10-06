@@ -1,31 +1,29 @@
-package com.project.portfolio.springboot.onlinesellingandshopping.serverapp.security;
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.AuthGroup;
-import com.project.portfolio.springboot.onlinesellingandshopping.serverapp.module.User;
+package com.online_shopping_rest_api.security;
+
+import com.online_shopping_rest_api.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ApplicationUserPrincipal implements UserDetails {
-
     private final User user;
-    private final List<AuthGroup> authGroups;
-
-    public ApplicationUserPrincipal(User user, List<AuthGroup> authGroups) {
-        super();
+    public ApplicationUserPrincipal(User user) {
         this.user = user;
-        this.authGroups = authGroups;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(null==authGroups){
+        if(user == null){
             return Collections.emptySet();
         }
         Set<SimpleGrantedAuthority> grantedAuthorities = new HashSet<>();
-        authGroups.forEach(authGroup ->{
-            grantedAuthorities.add(new SimpleGrantedAuthority(authGroup.getAuthGroup()));
+        user.getRoles().forEach(role ->{
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole()));
         });
         return grantedAuthorities;
     }
