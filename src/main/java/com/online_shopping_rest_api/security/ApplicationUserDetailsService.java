@@ -1,5 +1,6 @@
 package com.online_shopping_rest_api.security;
 
+import com.online_shopping_rest_api.dto.UserDTO;
 import com.online_shopping_rest_api.entity.User;
 import com.online_shopping_rest_api.repository.RoleRepository;
 import com.online_shopping_rest_api.repository.UserRepository;
@@ -29,7 +30,7 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-       final Optional <User> user = this.userRepository.findByUsername(username);
+       final Optional <UserDTO> user = this.userRepository.findByUsername(username);
 
         if(!user.isPresent()) {
             throw new UsernameNotFoundException("User with the username " + username + " does not exist.");

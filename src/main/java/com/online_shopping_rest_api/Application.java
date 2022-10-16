@@ -5,7 +5,7 @@ import com.online_shopping_rest_api.entity.User;
 import com.online_shopping_rest_api.repository.RoleRepository;
 import com.online_shopping_rest_api.repository.UserRepository;
 import com.online_shopping_rest_api.security.PasswordEncoder;
-
+import com.online_shopping_rest_api.util.DateGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +14,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.transaction.Transactional;
-import java.sql.Date;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
-
-	public boolean alreadySetup = false;
-
+	private boolean alreadySetup = false;
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 	@Autowired
-	RoleRepository roleRepository;
+	private RoleRepository roleRepository;
 
 	private static Logger LOG = LoggerFactory.getLogger(Application.class);
 
@@ -46,38 +45,25 @@ public class Application implements CommandLineRunner {
 		final Optional<Role> adminRole = createRoleIfNotFound("ROLE_ADMIN");
 		final Optional<Role> userRole = createRoleIfNotFound("ROLE_USER");
 
-		long millis=System.currentTimeMillis();
-		Date date = new Date(millis);
+		PasswordEncoder passwordEncoder = new PasswordEncoder();
+		DateGenerator dateGenerator = new DateGenerator();
 
-		Set<Role> roles = new HashSet<>();
+		List<Role> roles = new ArrayList<>();
 		roles.add(masterAdminRole.get());
 		roles.add(adminRole.get());
 		roles.add(userRole.get());
 
-			User user = new User();
-			user.setUsername("danmargreen");
-			user.setFirstName("Danmar");
-			user.setLastName("Green");
-			user.setDateOfBirth("1996-17-01");
-			user.setAddress("5955 Skyline Dr, West Linn, OR, 97068");
-			user.setEmail("danmargreen0@gmail.com");
+		User user = new User.Builder("danmargreen","Danmar","Green", passwordEncoder.getEncodedPassword("Terren17"),
+				"5955 Skyline Dr, West Linn, OR, 97068","1996-17-01","danmargreen0@gmail.com",
+				"(503)-833-2453", dateGenerator.getSQLDate(),dateGenerator.getSQLDate(),roles).build();
 
-			PasswordEncoder passwordEncoder = new PasswordEncoder("Terren17");
-			user.setPassword(passwordEncoder.getEncodedPassword());
-			user.setPhoneNo("(503)-833-2453");
-			user.setCreatedAt(date);
-			user.setModifiedAt(date);
-
-			user.setRoles(roles);
-
-			userRepository.saveAndFlush(user);
-
+		userRepository.saveAndFlush(user);
 
 		alreadySetup = true;
 	}
 
 	@Transactional
-	Optional<Role> createRoleIfNotFound(String role){
+	private Optional<Role> createRoleIfNotFound(String role){
 
 		Optional<Role> roles = roleRepository.findByRole(role);
 

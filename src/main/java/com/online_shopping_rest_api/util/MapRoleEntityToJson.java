@@ -1,12 +1,13 @@
 package com.online_shopping_rest_api.util;
 
 import com.online_shopping_rest_api.entity.Role;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
+@Component
 public class MapRoleEntityToJson {
     public List<Map<String,Object>> getRolesJson(List<Role> roles){
 

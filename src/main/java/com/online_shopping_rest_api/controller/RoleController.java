@@ -21,7 +21,7 @@ public class RoleController {
     private RoleServiceImpl roleService;
 
     @GetMapping(path="/roles", produces = "application/json")
-    @PreAuthorize("hasAnyRole('ROLE_MASTER_ADMIN','ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MASTER_ADMIN')")
     public ResponseEntity<List<Map<String,Object>>> getRoles(){
 
         List<Role> roles = roleService.getRoles();
@@ -31,7 +31,7 @@ public class RoleController {
     }
 
     @GetMapping(path="/role/{id}", produces = "application/json")
-    @PreAuthorize("hasAnyRole('ROLE_MASTER_ADMIN','ADMIN')")
+    @PreAuthorize("hasRole('ROLE_MASTER_ADMIN')")
     public ResponseEntity<Object> getRole(@PathVariable int id){
 
         if(id < 0)
@@ -42,4 +42,5 @@ public class RoleController {
 
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
+
 }

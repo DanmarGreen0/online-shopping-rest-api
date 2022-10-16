@@ -1,11 +1,15 @@
 package com.online_shopping_rest_api.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name="Roles")
+@Data
 public class Role {
+    //To do: 1) doc exceptions
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
@@ -15,30 +19,7 @@ public class Role {
     private String role;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
-    Set<User> users;
+    List<User> users;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 }
 

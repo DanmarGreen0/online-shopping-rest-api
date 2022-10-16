@@ -3,8 +3,12 @@ package com.online_shopping_rest_api.util;
 import com.online_shopping_rest_api.entity.User;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
+@Component
 public class MapUserEntityToJson {
     public List<LinkedHashMap<String,Object>> getUsersJson(List<User> users){
 

@@ -1,6 +1,6 @@
 package com.online_shopping_rest_api.security;
 
-import com.online_shopping_rest_api.entity.User;
+import com.online_shopping_rest_api.dto.UserDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,18 +11,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ApplicationUserPrincipal implements UserDetails {
-    private final User user;
-    public ApplicationUserPrincipal(User user) {
-        this.user = user;
+    private final UserDTO userDTO;
+    public ApplicationUserPrincipal(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(user == null){
+        if(userDTO == null){
             return Collections.emptySet();
         }
         Set<SimpleGrantedAuthority> grantedAuthorities = new HashSet<>();
-        user.getRoles().forEach(role ->{
+        userDTO.getRoles().forEach(role ->{
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole()));
         });
         return grantedAuthorities;
@@ -30,12 +30,12 @@ public class ApplicationUserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.user.getPassword();
+        return this.userDTO.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.user.getUsername();
+        return this.userDTO.getUsername();
     }
 
     @Override
